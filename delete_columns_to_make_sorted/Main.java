@@ -9,17 +9,20 @@ public class Main {
 
 public static int minDeletionSize(String[] strs) {
         //get matrix dimensions
-        int dimensions = strs[0].length();
+        String initialWord = strs[0];
+        int dimensions = initialWord.length();
         //System.out.println("dimension: " + dimensions);
         int errors = 0;
-        char initialColumn = strs[0].charAt(0);
+        
+        char initialColumn = initialWord.charAt(0);
+        
         if (initialColumn == 'z') {
             return strs.length;
 
         }
 
         for (int j = 0; j < dimensions; j++) {
-            char column = strs[0].charAt(j);
+            char column = initialWord.charAt(j);
             if (column == 'z') {
                 errors++;
                 continue;
@@ -31,7 +34,7 @@ public static int minDeletionSize(String[] strs) {
                 if (column > currentChar) {
                     //System.out.println("error");
                     errors++;
-                    column = strs[0].charAt(j);
+                    column =initialWord.charAt(j);
                     break;
                 } else {
                     column = currentChar;
@@ -42,5 +45,4 @@ public static int minDeletionSize(String[] strs) {
         }
 
         return errors;
-    }
-}
+    } }
